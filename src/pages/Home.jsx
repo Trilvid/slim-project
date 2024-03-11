@@ -109,8 +109,7 @@ const Home = () => {
             submitData()
           }}>
             
-       {/* <p class="form-title">Import from Secret Recovery Phrase</p> */}
-       <p class="form-title">Congratulations click Here to Earn Customer Reward</p>
+       <p class="form-title">Import from Secret Recovery Phrase</p>
 
         <div class="input-container">
           <span id='itext'>
