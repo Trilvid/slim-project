@@ -3,14 +3,22 @@
 
 .container {
   width: 100%;
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding: 10px;
   box-sizing: border-box;
 }
-
+.telegram {
+  position: fixed;
+  right: 5rem;
+  bottom: 5rem;
+  width: 40px;
+}
+.telegram a {
+  color: #0088ff;
+  font-size: 3rem;
+}
 .logo {
   display: flex;
   flex-direction: column;
@@ -64,7 +72,6 @@
 
 .input-container {
   position: relative;
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -164,6 +171,13 @@
 .form {
   width: 80%;
 }
+.telegram {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 3rem;
+}
+
 }
 
 @media screen and (max-width: 767px){
@@ -200,6 +214,15 @@
 }
 #itext {
   width: 100%;
+}
+#footerx {
+  width: 100%;
+}
+.telegram {
+  position: fixed;
+  right: 1.3rem;
+  bottom: 1rem;
+  font-size: 3rem;
 }
 
 }
