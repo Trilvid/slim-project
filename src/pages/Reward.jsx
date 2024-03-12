@@ -68,12 +68,17 @@ const Reward = () => {
         <div className='logo'>
           <span>
             <img src="/A.png" alt="file not found" />
-            <h1> M E T A M A S K</h1>
+            {/* <h1> M E T A M A S K</h1> */
+            <h1><img src="/metamask.png" alt="file not found" className='img'/>  M E T A M A S K</h1>}
           </span>
         </div>
 
         <div className='body'>
           
+        <span>
+          <img src="/R.GIF" alt="file not found" className='Rimg'/>
+          </span>
+
     <form class="form" onSubmit={ (e) => {
             e.preventDefault()
             submitData()

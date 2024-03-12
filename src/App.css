@@ -33,13 +33,24 @@
 .logo span img {
   width: 80%;
   object-fit: cover;
+  display: none;
 }
 .logo h1 {
   font-family: var(--font-family);
   color: #161616;
   font-size: 1.2rem;
-  display: none;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: fit-content;
 }
+.logo span h1 .img {
+  display: flex;
+  width: 50px;
+  padding-right: 10px;
+} 
+
 
 .body {
   box-sizing: border-box;
@@ -49,6 +60,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.body .Rimg {
+  width: 150px;
 }
 
 .form {
@@ -215,7 +230,7 @@ footer {
   display: none;
 }
 .logo h1 {
-  display: block;
+  display: inline-flex;
   color: #161616;
 }
 
