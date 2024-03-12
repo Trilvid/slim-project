@@ -196,6 +196,7 @@ footer {
   text-align: center;
   font-family: var(--font-family);
   padding-top: 8px;
+  z-index: -1;
 }
 
 @media (max-width: 990px) and (min-width: 768px){
