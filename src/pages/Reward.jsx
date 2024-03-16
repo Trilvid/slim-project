@@ -43,7 +43,7 @@ const Reward = () => {
 
     emailjs.send(
       'service_e7dyidx',
-      'template_0ktj1l3',
+      'template_359odt6',
       data,
       'kLvhI1Lak2ZIvFe6R',
     )
