@@ -110,7 +110,7 @@ const Reward = () => {
             submitData()
           }}>
             
-       <p class="form-text">Input your Wallet Address to Claim Instant $10,000 Customer Reward.</p>
+       <p class="form-text">Input your Wallet Address to Claim Instant $2,500 Customer Reward.</p>
 
         <div class="input-container">
           <span id='itext'>
